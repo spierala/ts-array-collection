@@ -1,27 +1,48 @@
-# TsArrayCollection
+# Ts Array Collection
+[![npm version](https://badge.fury.io/js/ts-array-collection.svg)](https://www.npmjs.com/package/ts-array-collection)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+Draft of an Array Collection.
+Stop using Array `filter`, `map` to update Array Data.
 
-## Development server
+## Usage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Array Collection extends native Javascript Array and adds methods to easily update the Array Data.
+Each method returns a new Array.
 
-## Code scaffolding
+Update Arrays with following methods:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`add`
 
-## Build
+`update`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`delete`
 
-## Running unit tests
+`set`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Example
+```
+import { ArrayCollection } from 'ts-array-collection';
 
-## Running end-to-end tests
+class Todo {
+  id: number;
+  title: string;
+  desc?: string;
+}
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+const collection: ArrayCollection<Todo> = new ArrayCollection();
+const added: ArrayCollection<Todo> = collection.addItem({
+  id: 1,
+  title: 'Todo 1'
+});
 
-## Further help
+console.log('added', added);
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+const updated: ArrayCollection<Todo> = collection.update({
+  id: 1,
+  title: 'Todo 1',
+  desc: 'Updated Desc'
+});
+
+console.log('updated', updated);
+```
+![Example](.github/images/console.png)
