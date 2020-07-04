@@ -1,0 +1,19 @@
+{
+  "name": "ts-array-collection",
+  "version": "0.0.1-alpha.0",
+  "author": "Florian Spier <mail@florian-spier.be> (https://florian-spier.be)",
+  "description": "Ts Array Collection: Easily manage array data",
+  "keywords": [
+    "Array",
+    "Typescript",
+    "JavaScript"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^9.1.11",
+    "@angular/core": "^9.1.11"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}
