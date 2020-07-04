@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ts-array-collection": [
+        "dist/ts-array-collection/ts-array-collection",
+        "dist/ts-array-collection"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
