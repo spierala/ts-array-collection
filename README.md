@@ -1,7 +1,7 @@
 # Ts Array Collection
 [![npm version](https://badge.fury.io/js/ts-array-collection.svg)](https://www.npmjs.com/package/ts-array-collection)
 
-`ArrayCollection` extends native Javascript Array and adds additional methods to manage Array data as a collection.
+`ArrayCollection` extends native Javascript Array and adds additional methods to manage Array data as a Collection.
 
 ## Features
 - ArrayCollection is still a native Javascript Array under the hood (all Array methods stay intact, ES6 Array spread syntax still works)
