@@ -19,8 +19,8 @@ export class ArrayCollection<T> extends Array<T> {
     return this.getNewArrayCollectionWithIdKey([...this, item]);
   }
 
-  update(item: T): ArrayCollection<T> {
-    const newArray: T[] = this.map(aItem => String(aItem[this.idKey]) === String(item[this.idKey]) ? item : aItem );
+  update(id: string | number, item: T): ArrayCollection<T> {
+    const newArray: T[] = this.map(aItem => String(aItem[this.idKey]) === String(id) ? item : aItem );
     return this.getNewArrayCollectionWithIdKey(newArray);
   }
 

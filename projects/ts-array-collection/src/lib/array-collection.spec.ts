@@ -55,7 +55,7 @@ describe('ArrayCollection', () => {
       ...todo2,
       desc: 'updated desc'
     };
-    const updated: ArrayCollection<Todo> = ac.update(updatedTodo);
+    const updated: ArrayCollection<Todo> = ac.update(2, updatedTodo);
     expect(ac.length).toBe(2);
     expect(ac[1]).toBe(todo2);
 
@@ -106,18 +106,20 @@ describe('ArrayCollection', () => {
 
     const todo22: TodoWithCustomId = {
       fancyId: 22,
-      title: 'todo1'
+      title: 'todo2'
     };
 
     const todo22Updated: TodoWithCustomId = {
       fancyId: 22,
-      title: 'todo1',
+      title: 'todo2',
       desc: 'updated desc'
     };
 
     const ac: ArrayCollection<TodoWithCustomId> = new ArrayCollection<TodoWithCustomId>(todo11, todo22).setIdKey('fancyId');
-    const acAfterUpdate: ArrayCollection<TodoWithCustomId> = ac.update(todo22Updated);
+    const acAfterUpdate: ArrayCollection<TodoWithCustomId> = ac.update(22, todo22Updated);
+
     expect(acAfterUpdate.length).toBe(2);
+    expect(acAfterUpdate[0]).toBe(todo11);
     expect(acAfterUpdate[1]).toBe(todo22Updated);
     expect(ac[0]).toBe(todo11);
     expect(ac[1]).toBe(todo22);
