@@ -5,7 +5,7 @@
 
 ## Features
 - ArrayCollection is still a native Javascript Array under the hood (all Array methods stay intact, ES6 Array spread syntax still works)
-- Every ArrayCollection method returns a new ArrayCollection/Array which is useful if you need to work with immutable data 
+- Every ArrayCollection method returns a new ArrayCollection/Array which is useful if you need to work with immutable data
 
 ## Usage
 
@@ -53,3 +53,17 @@ console.log('updated', updated);
 Console output:
 
 ![Example](.github/images/console.png)
+
+ArrayCollection uses the `id` property of an item to find the correct item e.g. for update/remove.
+The default idKey can be adjusted:
+
+`const collection: ArrayCollection = new ArrayCollection().setIdKey('fancyId')`
+
+## License
+
+MIT
+
+## Created By
+
+If you like this, follow [@spierala](https://twitter.com/spierala) on twitter.
+
