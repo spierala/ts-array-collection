@@ -1,5 +1,6 @@
 # Ts Array Collection
 [![npm version](https://badge.fury.io/js/ts-array-collection.svg)](https://www.npmjs.com/package/ts-array-collection)
+![Node.js CI](https://github.com/spierala/ts-array-collection/workflows/Node.js%20CI/badge.svg)
 
 `ArrayCollection` extends native Javascript Array and adds additional methods to manage Array data as a Collection.
 
