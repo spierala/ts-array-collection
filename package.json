@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "ts-ac-version++": "cd projects/ts-array-collection && npm version prerelease --preid=alpha",
-    "ts-ac-build": "npm run ts-ac-version++ && ng build ts-array-collection --prod && copy LICENSE dist/ts-array-collection && copy README.md dist/ts-array-collection"
+    "ts-ac-build": "npm run ts-ac-version++ && ng build ts-array-collection --prod && copy LICENSE dist/ts-array-collection && copy README.md dist/ts-array-collection",
+    "ts-ac-test": "ng test ts-array-collection"
   },
   "private": true,
   "dependencies": {
