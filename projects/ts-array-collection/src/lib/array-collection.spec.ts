@@ -57,10 +57,10 @@ describe('ArrayCollection', () => {
     };
     const updated: ArrayCollection<Todo> = ac.update(2, updatedTodo);
     expect(ac.length).toBe(2);
-    expect(ac[1]).toBe(todo2);
+    expect(ac[1]).toEqual(todo2);
 
     expect(updated).not.toBe(ac);
-    expect(updated[1]).toBe(updatedTodo);
+    expect(updated[1]).toEqual(updatedTodo);
   });
 
   it('should replace the entire collection with another array', () => {
@@ -120,13 +120,13 @@ describe('ArrayCollection', () => {
 
     expect(acAfterUpdate.length).toBe(2);
     expect(acAfterUpdate[0]).toBe(todo11);
-    expect(acAfterUpdate[1]).toBe(todo22Updated);
+    expect(acAfterUpdate[1]).toEqual(todo22Updated);
     expect(ac[0]).toBe(todo11);
     expect(ac[1]).toBe(todo22);
 
     const acAfterRemove: ArrayCollection<TodoWithCustomId> = acAfterUpdate.remove(todo11.fancyId);
     expect(acAfterRemove.length).toBe(1);
-    expect(acAfterRemove[0]).toBe(todo22Updated);
+    expect(acAfterRemove[0]).toEqual(todo22Updated);
   });
 
   it('should still behave like an array', () => {
