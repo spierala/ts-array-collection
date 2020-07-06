@@ -25,30 +25,32 @@ Update Arrays with following methods:
 
 ## Example
 ```
-import { ArrayCollection } from 'ts-array-collection';
+    const initialized: ArrayCollection<Todo> = new ArrayCollection({
+      id: 1,
+      title: 'Todo 1'
+    });
+    console.log('initialized', initialized);
 
-class Todo {
-  id: number;
-  title: string;
-  desc?: string;
-}
+    const added: ArrayCollection<Todo> = initialized.add({
+      id: 2,
+      title: 'Todo 2'
+    });
+    console.log('added', added);
 
-const collection: ArrayCollection<Todo> = new ArrayCollection();
-const added: ArrayCollection<Todo> = collection.add({
-  id: 1,
-  title: 'Todo 1'
-});
+    const updated: ArrayCollection<Todo> = added.update(2, {
+      desc: 'Updated Desc'
+    });
+    console.log('updated', updated);
 
-console.log('added', added);
+    const removed: ArrayCollection<Todo> = updated.remove(2);
+    console.log('removed', removed);
 
-const updated: ArrayCollection<Todo> = collection.update({
-  id: 1,
-  title: 'Todo 1',
-  desc: 'Updated Desc'
-});
-
-console.log('updated', updated);
-````
+    const afterSet: ArrayCollection<Todo> = updated.set([{
+      id: 3,
+      title: 'Todo 3'
+    }]);
+    console.log('afterSet', afterSet);
+```
 
 Console output:
 
