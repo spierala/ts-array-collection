@@ -16,31 +16,43 @@ export class AppComponent {
   title = 'ts-array-collection-app';
 
   constructor() {
+    // Create new ArrayCollection
     const initialized: ArrayCollection<Todo> = new ArrayCollection({
       id: 1,
       title: 'Todo 1'
     });
-    console.log('initialized', initialized);
 
+    // Add new item
     const added: ArrayCollection<Todo> = initialized.add({
       id: 2,
       title: 'Todo 2'
     });
-    console.log('added', added);
 
+    // Update item by Id
     const updated: ArrayCollection<Todo> = added.update(2, {
       desc: 'Updated Desc'
     });
-    console.log('updated', updated);
 
+    // Remove item by Id
     const removed: ArrayCollection<Todo> = updated.remove(2);
-    console.log('removed', removed);
 
-    const afterSet: ArrayCollection<Todo> = updated.set([{
-      id: 3,
-      title: 'Todo 3'
-    }]);
-    console.log('afterSet', afterSet);
+    // Replace current collection with the provided collection
+    const afterSet: ArrayCollection<Todo> = updated.set([
+      {
+        id: 3,
+        title: 'Todo 3'
+      },
+      {
+        id: 4,
+        title: 'Todo 4'
+      }
+    ]);
+
+    console.log('INITIALIZED\n', initialized);
+    console.log('ADDED\n', added);
+    console.log('UPDATED\n', updated);
+    console.log('REMOVED\n', removed);
+    console.log('AFTERSET\n', afterSet);
   }
 }
 
