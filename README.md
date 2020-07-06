@@ -24,6 +24,12 @@ Update Arrays with following methods:
 
 `set(items: T[]): ArrayCollection<T>`
 
+ArrayCollection uses the `id` property of an item to find the correct item e.g. for update/remove.
+
+The default idKey can be adjusted:
+
+`const collection: ArrayCollection = new ArrayCollection().setIdKey('fancyId')`
+
 ## Example
 ```
 // Create new ArrayCollection
@@ -64,16 +70,35 @@ console.log('UPDATED\n', updated);
 console.log('REMOVED\n', removed);
 console.log('AFTERSET\n', afterSet);
 ```
-
 Console output:
 
 ![Example](.github/images/console.png)
 
-ArrayCollection uses the `id` property of an item to find the correct item e.g. for update/remove.
+##### Play with the native Array functionality of ArrayCollection:
+```
+const arrayCollection: ArrayCollection<Todo> = new ArrayCollection({
+  id: 1,
+  title: 'Todo 1'
+});
+// Mutate the ArrayCollection/Array with native JS Array.push
+arrayCollection.push({
+  id: 2,
+  title: 'Todo 2'
+});
+console.log('Mutated with native Array.push\n', arrayCollection);
 
-The default idKey can be adjusted:
+// ES6 Array Spread syntax
+const arrayCollection2: ArrayCollection<Todo> = new ArrayCollection({
+  id: 22,
+  title: 'Todo 22'
+});
+const newArray: Todo[] = [...arrayCollection2, {id: 33, title: 'Todo 33'}];
+console.log('Created new Array using ES6 Array spread syntax: \n', newArray);
+```
 
-`const collection: ArrayCollection = new ArrayCollection().setIdKey('fancyId')`
+Console output:
+
+![Example](.github/images/play.png)
 
 ## License
 
