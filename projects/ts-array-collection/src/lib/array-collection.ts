@@ -12,32 +12,24 @@ export class ArrayCollection<T> extends Array<T> {
   }
 
   set(items: T[]): ArrayCollection<T> {
-    this.updateNativeArray(items);
-    return this.getNewArrayCollectionWithIdKey();
+    return this.getNewArrayCollectionWithIdKey(items);
   }
 
   add(item: T): ArrayCollection<T> {
-    this.push(item);
-    return this.getNewArrayCollectionWithIdKey();
+    return this.getNewArrayCollectionWithIdKey([...this, item]);
   }
 
   update(item: T): ArrayCollection<T> {
     const newArray: T[] = this.map(aItem => String(aItem[this.idKey]) === String(item[this.idKey]) ? item : aItem );
-    this.updateNativeArray(newArray);
-    return this.getNewArrayCollectionWithIdKey();
+    return this.getNewArrayCollectionWithIdKey(newArray);
   }
 
   remove(id: string | number): ArrayCollection<T> {
     const newArray: T[] = this.filter((aItem) => String(aItem[this.idKey]) !== String(id));
-    this.updateNativeArray(newArray);
-    return this.getNewArrayCollectionWithIdKey();
+    return this.getNewArrayCollectionWithIdKey(newArray);
   }
 
-  private updateNativeArray(newArray: T[]) {
-    this.splice(0, this.length, ...newArray);
-  }
-
-  private getNewArrayCollectionWithIdKey(): ArrayCollection<T> {
-    return new ArrayCollection<T>(...this).setIdKey(this.idKey);
+  private getNewArrayCollectionWithIdKey(newArray: T[]): ArrayCollection<T> {
+    return new ArrayCollection<T>(...newArray).setIdKey(this.idKey);
   }
 }

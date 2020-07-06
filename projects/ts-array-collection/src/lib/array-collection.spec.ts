@@ -23,6 +23,16 @@ describe('ArrayCollection', () => {
     title: 'Todo 3'
   };
 
+  const todo4: Todo = {
+    id: 4,
+    title: 'Todo 4'
+  };
+
+  const todo5: Todo = {
+    id: 5,
+    title: 'Todo 5'
+  };
+
   it('should create an array with initial value', () => {
     const ac: ArrayCollection<Todo> = new ArrayCollection<Todo>(todo1);
     expect(ac.length).toBe(1);
@@ -32,10 +42,10 @@ describe('ArrayCollection', () => {
   it('should add an item and return a new array', () => {
     const ac: ArrayCollection<Todo> = new ArrayCollection<Todo>(todo1);
     const added: ArrayCollection<Todo> = ac.add(todo2);
-    expect(ac.length).toBe(2);
-    expect(ac[1]).toBe(todo2);
+    expect(ac.length).toBe(1);
 
     expect(added).not.toBe(ac);
+    expect(added.length).toBe(2);
     expect(added[1]).toBe(todo2);
   });
 
@@ -47,35 +57,38 @@ describe('ArrayCollection', () => {
     };
     const updated: ArrayCollection<Todo> = ac.update(updatedTodo);
     expect(ac.length).toBe(2);
-    expect(ac[1]).toBe(updatedTodo);
+    expect(ac[1]).toBe(todo2);
 
     expect(updated).not.toBe(ac);
     expect(updated[1]).toBe(updatedTodo);
   });
 
-  it('should replace the collection with another array', () => {
-    const ac: ArrayCollection<Todo> = new ArrayCollection<Todo>(new Todo(), new Todo(), new Todo());
+  it('should replace the entire collection with another array', () => {
+    const ac: ArrayCollection<Todo> = new ArrayCollection<Todo>(todo3, todo4, todo5);
     const array: Todo[] = [todo1, todo2];
     const acAfterSet: ArrayCollection<Todo> = ac.set(array);
-    expect(ac.length).toBe(2);
-    expect(ac[0]).toBe(todo1);
-    expect(ac[1]).toBe(todo2);
+    expect(ac.length).toBe(3);
+    expect(ac[0]).toBe(todo3);
+    expect(ac[1]).toBe(todo4);
+    expect(ac[2]).toBe(todo5);
 
     expect(acAfterSet).not.toBe(ac);
     expect(acAfterSet[0]).toBe(todo1);
     expect(acAfterSet[1]).toBe(todo2);
+    expect(acAfterSet[2]).toBeUndefined();
   });
 
   it('should remove an item and return a new array', () => {
     const ac: ArrayCollection<Todo> = new ArrayCollection<Todo>(todo1, todo2, todo3);
-    const acAfterRemove: ArrayCollection<Todo> = ac.remove(1);
+    const acAfterRemove: ArrayCollection<Todo> = ac.remove(2);
     expect(acAfterRemove.length).toBe(2);
-    expect(ac[0]).toBe(todo2);
-    expect(ac[1]).toBe(todo3);
+    expect(ac[0]).toBe(todo1);
+    expect(ac[1]).toBe(todo2);
+    expect(ac[2]).toBe(todo3);
 
     expect(acAfterRemove).not.toBe(ac);
 
-    expect(acAfterRemove[0]).toBe(todo2);
+    expect(acAfterRemove[0]).toBe(todo1);
     expect(acAfterRemove[1]).toBe(todo3);
   });
 
@@ -105,10 +118,11 @@ describe('ArrayCollection', () => {
     const ac: ArrayCollection<TodoWithCustomId> = new ArrayCollection<TodoWithCustomId>(todo11, todo22).setIdKey('fancyId');
     const acAfterUpdate: ArrayCollection<TodoWithCustomId> = ac.update(todo22Updated);
     expect(acAfterUpdate.length).toBe(2);
+    expect(acAfterUpdate[1]).toBe(todo22Updated);
     expect(ac[0]).toBe(todo11);
-    expect(ac[1]).toBe(todo22Updated);
+    expect(ac[1]).toBe(todo22);
 
-    const acAfterRemove: ArrayCollection<TodoWithCustomId> = ac.remove(todo11.fancyId);
+    const acAfterRemove: ArrayCollection<TodoWithCustomId> = acAfterUpdate.remove(todo11.fancyId);
     expect(acAfterRemove.length).toBe(1);
     expect(acAfterRemove[0]).toBe(todo22Updated);
   });
