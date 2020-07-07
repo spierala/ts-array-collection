@@ -7,15 +7,15 @@
 ## Features
 - ArrayCollection is still a native Javascript Array under the hood (all Array methods stay intact, ES6 Array spread syntax still works)
 - Every ArrayCollection method returns a new ArrayCollection/Array which is useful if you need to work with immutable data
-- The original ArrayCollection/Array it **not** mutated by performing the ArrayCollection methods.
+- The original ArrayCollection/Array is **not** mutated by performing the ArrayCollection methods.
 
 ## Usage
 
-Create a new Array Collection:
+#### Create a new Array Collection:
 
 `const collection: ArrayCollection<T> = new ArrayCollection(obj1, obj2);`
 
-Update Arrays with following methods:
+#### Update the Array Collection with following methods:
 
 `add(item: T): ArrayCollection<T>`
 
@@ -25,7 +25,9 @@ Update Arrays with following methods:
 
 `set(items: T[]): ArrayCollection<T>`
 
-ArrayCollection uses the `id` property of an item to find the correct item e.g. for update/remove.
+#### Update the default id key
+
+ArrayCollection uses the `id` property of an item to perform lookups (e.g. for update/remove).
 
 The default idKey can be adjusted:
 
@@ -75,7 +77,7 @@ Console output:
 
 ![Example](.github/images/console.png)
 
-##### Play with the native Array functionality of ArrayCollection:
+#### Play with the native Array functionality of ArrayCollection:
 ```
 const arrayCollection: ArrayCollection<Todo> = new ArrayCollection({
   id: 1,
