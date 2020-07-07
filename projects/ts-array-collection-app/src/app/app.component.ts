@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ArrayCollection } from 'ts-array-collection';
+import { MapCollection } from '../../../ts-array-collection/src/lib/map-collection';
 
 interface Todo {
   id: number;
@@ -72,6 +73,45 @@ export class AppComponent {
     });
     const newArray: Todo[] = [...arrayCollection2, {id: 33, title: 'Todo 33'}];
     console.log('Created new Array using ES6 Array spread syntax: \n', newArray);
+
+
+
+
+    const mcInitialized: MapCollection<Todo> = new MapCollection<Todo>([
+      {
+        id: 1,
+        title: 'Todo 1'
+      }
+    ]);
+
+    const mcAdded = mcInitialized.add({
+      id: 2,
+      title: 'Todo 2'
+    });
+
+    const mcUpdated = mcAdded.update(2, {
+      desc: 'Updated Desc'
+    });
+
+    const mcRemoved = mcUpdated.remove(1);
+
+    const mcAfterSet = mcUpdated.setItems([
+      {
+        id: 3,
+        title: 'Todo 3'
+      },
+      {
+        id: 4,
+        title: 'Todo 4'
+      }
+    ]);
+
+    console.log('MC INITIALIZED\n', mcInitialized);
+    console.log('MC ADDED\n', mcAdded);
+    console.log('MC UPDATED\n', mcUpdated);
+    console.log('MC REMOVED\n', mcRemoved);
+    console.log('MC AFTERSET\n', mcAfterSet);
+    console.log('MC AFTERSET items\n', mcAfterSet.getItems());
   }
 }
 

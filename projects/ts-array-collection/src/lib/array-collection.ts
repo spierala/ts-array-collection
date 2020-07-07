@@ -20,11 +20,13 @@ export class ArrayCollection<T> extends Array<T> {
   }
 
   update(id: string | number, item: Partial<T>): ArrayCollection<T> {
+    // TODO handle item not found
     const newArray: T[] = this.map(aItem => String(aItem[this.idKey]) === String(id) ? ({...aItem, ...item}) : aItem );
     return this.getNewArrayCollectionWithIdKey(newArray);
   }
 
   remove(id: string | number): ArrayCollection<T> {
+    // TODO handle item not found
     const newArray: T[] = this.filter((aItem) => String(aItem[this.idKey]) !== String(id));
     return this.getNewArrayCollectionWithIdKey(newArray);
   }
