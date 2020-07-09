@@ -136,6 +136,10 @@ describe('ArrayCollection', () => {
 
     expect(newArray.length).toBe(3);
     expect(newArray[2]).toBe(todo3);
+
+    const ac2: ArrayCollection<Todo> = new ArrayCollection<Todo>(todo1, todo2);
+    const mapped: Array<number> = ac2.map(item => item.id);
+    expect(mapped).toEqual([1, 2]);
   });
 });
 

@@ -17,8 +17,8 @@
     ],
     "paths": {
       "ts-array-collection": [
-        "dist/ts-array-collection/ts-array-collection",
-        "dist/ts-array-collection"
+        "projects/ts-array-collection/ts-array-collection",
+        "projects/ts-array-collection"
       ]
     }
   },
