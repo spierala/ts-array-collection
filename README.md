@@ -1,5 +1,9 @@
+## EXPERIMENTAL - DO NOT USE IN PRODUCTION
+
+> I realized that it is not a good idea to extend native JS Array. Native Array methods like `map` will return an Array and not ArrayCollection. The information about a custom `idKey` will be lost then.
+
+
 # Ts Array Collection
-[![npm version](https://badge.fury.io/js/ts-array-collection.svg)](https://www.npmjs.com/package/ts-array-collection)
 [![Tests](https://github.com/spierala/ts-array-collection/workflows/Tests/badge.svg)](https://github.com/spierala/ts-array-collection/actions?query=workflow%3ATests)
 
 `ArrayCollection` extends native Javascript Array and adds additional methods to manage Array data as a Collection.
